@@ -20,33 +20,9 @@ A production-ready real-time polling system built with the MERN stack (MongoDB, 
 cd backend
 npm install
 npm run dev
-*(Make sure MongoDB is running locally on port 27017 or supply a `.env` with `MONGO_URI`)*
+*(Make sure MongoDB is running and supply a `.env` with `MONGO_URI`)*
 
 ### 2. Frontend
 cd frontend
 npm install
 npm run dev
-
-## Deployment Instructions
-
-### Backend (Render / Railway)
-1. Push your code to GitHub.
-2. Link your repository to Render or Railway as a Node Web Service.
-3. Set the build command to `npm install && npm run build` inside the `backend` directory.
-4. Set the start command to `npm start` (ensure `start` script points to `node dist/index.js` in your `package.json` - please update as needed since we used `tsx` for dev).
-5. **Environment Variables**:
-   - `MONGO_URI`: Your MongoDB Atlas connection string.
-   - `PORT`: 5000 (Or let the provider assign it).
-6. Enable Socket.io support (Render automatically supports WebSockets on standard ports).
-
-### Frontend (Vercel / Netlify)
-1. Link your repository.
-2. Select the `frontend` directory as the Root Directory.
-3. Framework preset: Vite.
-4. **Environment Variables**:
-   - `VITE_API_URL`: The production URL of your deployed backend service (e.g. `https://polling-backend.up.railway.app`).
-5. Ensure rewrites are set up for React Router if needed (Vite handles this largely, but add `_redirects` file with `/* /index.html 200` for Netlify or `vercel.json` for Vercel).
-
-## Delivered Files
-- `/backend` - Full backend with schemas, services, and REST/Socket.io integration.
-- `/frontend` - Full frontend matching Figma colors exactly with optimistic UI hooks.
