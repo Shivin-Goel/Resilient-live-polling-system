@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import Card from '../components/Card';
 import Button from '../components/Button';
 import Header from '../components/Header';
 

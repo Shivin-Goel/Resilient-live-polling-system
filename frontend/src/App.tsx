@@ -5,7 +5,7 @@ import RoleSelection from './pages/RoleSelection';
 import TeacherDashboard from './pages/TeacherDashboard';
 import StudentView from './pages/StudentView';
 
-const PrivateRoute = ({ children, requiredRole }: { children: JSX.Element, requiredRole: 'teacher' | 'student' }) => {
+const PrivateRoute = ({ children, requiredRole }: { children: React.ReactNode, requiredRole: 'teacher' | 'student' }) => {
   const { role } = useAuth();
 
   if (!role) {
