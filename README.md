@@ -20,7 +20,7 @@ A production-ready real-time polling system built with the MERN stack (MongoDB, 
 cd backend
 npm install
 npm run dev
-*(Make sure MongoDB is running locally on port 27017 or supply a `.env` with `MONGO_URI`)*
+*(Make sure MongoDB is running and supply a `.env` with `MONGO_URI`)*
 
 ### 2. Frontend
 cd frontend
