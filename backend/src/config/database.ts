@@ -1,8 +1,11 @@
 import mongoose from "mongoose";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const connectDB = async () => {
   try {
-    const mongoUri = process.env.MONGO_URI || "mongodb+srv://shivingoel15_db_user:j5G6NJ85mpWBv3Z8@cluster0.4apjxp5.mongodb.net/live-polling-system";
+    const mongoUri = process.env.MONGO_URI;
     const conn = await mongoose.connect(mongoUri);
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {

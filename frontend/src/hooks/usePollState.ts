@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { Socket } from 'socket.io-client';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api` : 'http://localhost:5000/api';
 
 export interface PollOption {
     id: string;
