@@ -140,18 +140,24 @@ const TeacherDashboard: React.FC = () => {
 
         return (
             <div className="app-container">
-                <div className="flex justify-between mb-2">
-                    <Header />
-                    <Button variant="primary" onClick={() => setViewHistory(true)}>View Poll history</Button>
+                <div className="flex items-center w-full mb-6" style={{ position: 'relative' }}>
+                    <div className="flex-1 flex justify-center">
+                        <Header />
+                    </div>
+                    <div style={{ position: 'absolute', right: 0 }}>
+                        <Button variant="primary" onClick={() => setViewHistory(true)}>View Poll history</Button>
+                    </div>
                 </div>
 
-                <div className="flex items-center gap-4 mb-2">
-                    <h2 style={{ fontSize: '20px' }}>Question 1</h2>
-                    <div style={{ color: 'var(--error)', fontWeight: 600, fontSize: '14px' }}>⏱️ 00:{remainingTime !== null ? (remainingTime < 10 ? `0${remainingTime}` : remainingTime) : '00'}</div>
+                <div className="flex justify-center mb-4">
+                    <div className="flex items-center justify-between" style={{ width: '600px', maxWidth: '100%' }}>
+                        <h2 style={{ fontSize: '20px' }}>Question 1</h2>
+                        <div style={{ color: 'var(--error)', fontWeight: 600, fontSize: '14px' }}>⏱️ 00:{remainingTime !== null ? (remainingTime < 10 ? `0${remainingTime}` : remainingTime) : '00'}</div>
+                    </div>
                 </div>
 
-                <div className="flex gap-4">
-                    <Card className="flex-1">
+                <div className="flex justify-center w-full">
+                    <Card style={{ width: '600px', maxWidth: '100%' }}>
                         <div style={{ padding: '16px', backgroundColor: 'var(--dark-gray)', color: 'var(--white)', fontWeight: 600, fontSize: '16px' }}>
                             {activePoll.question}
                         </div>
@@ -162,12 +168,15 @@ const TeacherDashboard: React.FC = () => {
                                 return (
                                     <div key={opt.id} className="flex items-center" style={{ position: 'relative', height: '48px', backgroundColor: 'var(--light-bg)', borderRadius: '4px', overflow: 'hidden' }}>
                                         <div style={{ position: 'absolute', top: 0, left: 0, height: '100%', width: `${percentage}%`, backgroundColor: 'var(--secondary-purple)', opacity: 0.8, transition: 'width 0.3s ease' }} />
-                                        <div className="flex justify-between w-full" style={{ position: 'relative', zIndex: 1, padding: '0 16px', fontWeight: 600, fontSize: '14px' }}>
-                                            <span style={{ color: percentage > 50 ? 'var(--white)' : 'var(--dark-gray)' }}>
-                                                <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px', borderRadius: '50%', backgroundColor: 'var(--primary-purple)', color: 'white', marginRight: '8px', fontSize: '12px' }}>{opt.id}</span>
-                                                {opt.text}
+                                        <div className="flex justify-between w-full items-center" style={{ position: 'relative', zIndex: 1, padding: '0 16px', fontWeight: 600, fontSize: '14px' }}>
+                                            <span
+                                                style={{ color: percentage > 50 ? 'var(--white)' : 'var(--dark-gray)', display: 'flex', alignItems: 'center', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', marginRight: '16px' }}
+                                                title={opt.text}
+                                            >
+                                                <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px', borderRadius: '50%', backgroundColor: 'var(--primary-purple)', color: 'white', marginRight: '8px', fontSize: '12px', flexShrink: 0 }}>{opt.id}</span>
+                                                <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{opt.text}</span>
                                             </span>
-                                            <span style={{ color: percentage > 50 ? 'var(--white)' : 'var(--dark-gray)' }}>{percentage}%</span>
+                                            <span style={{ color: percentage > 50 ? 'var(--white)' : 'var(--dark-gray)', flexShrink: 0 }}>{percentage}%</span>
                                         </div>
                                     </div>
                                 );
@@ -177,12 +186,14 @@ const TeacherDashboard: React.FC = () => {
                 </div>
 
                 {isPollFinished && (
-                    <div className="flex flex-col gap-4 mt-4" style={{ width: '250px' }}>
-                        <Button
-                            variant="primary"
-                            onClick={handleEndPoll}
-                            style={{ padding: '12px', width: '100%', backgroundColor: 'var(--white)', color: 'var(--primary-purple)', border: '1px solid var(--primary-purple)' }}
-                        >Ask New Question</Button>
+                    <div className="flex justify-center w-full mt-4">
+                        <div className="flex justify-end" style={{ width: '600px', maxWidth: '100%' }}>
+                            <Button
+                                variant="primary"
+                                onClick={handleEndPoll}
+                                style={{ padding: '12px 32px', backgroundColor: '#4F0DCE', color: '#FFF', border: 'none' }}
+                            >Ask New Question</Button>
+                        </div>
                     </div>
                 )}
 
@@ -348,7 +359,7 @@ const TeacherDashboard: React.FC = () => {
             </div>
 
             <div className="flex justify-end mt-4 pt-4" style={{ borderTop: '1px solid #E0E0E0' }}>
-                <Button variant="primary" onClick={handleCreatePoll} style={{ padding: '12px 32px' }}>Ask Question</Button>
+                <Button variant="primary" onClick={handleCreatePoll} style={{ padding: '12px 32px', backgroundColor: '#4F0DCE', color: '#FFF', border: 'none' }}>Ask Question</Button>
             </div>
         </div>
     );

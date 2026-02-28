@@ -52,7 +52,7 @@ const RoleSelection: React.FC = () => {
                     variant="primary"
                     onClick={handleContinue}
                     disabled={!selectedRole}
-                    style={{ padding: '12px 48px', marginTop: '16px' }}
+                    style={{ padding: '12px 48px', marginTop: '16px', backgroundColor: '#4F0DCE', color: '#FFF', border: 'none' }}
                 >
                     Continue
                 </Button>

@@ -144,19 +144,21 @@ const StudentView: React.FC = () => {
 
             {/* Active Poll State */}
             {activePoll && (
-                <div className="flex-col items-center w-full" style={{ margin: '0 auto', maxWidth: '800px' }}>
-                    <div className="flex w-full items-center gap-4 mb-4">
-                        <h2 style={{ fontSize: '18px' }}>Question 1</h2>
-                        {activePoll.status === 'active' && (
-                            <div style={{ color: 'var(--error)', fontWeight: 600, fontSize: '14px' }}>
-                                ⏱️ 00:{(remainingTime ?? 0) < 10 ? `0${remainingTime ?? 0}` : remainingTime ?? 0}
-                            </div>
-                        )}
+                <div className="flex-col items-center w-full" style={{ margin: '0 auto', maxWidth: '100%' }}>
+                    <div className="flex justify-center mb-4">
+                        <div className="flex items-center justify-between" style={{ width: '600px', maxWidth: '100%' }}>
+                            <h2 style={{ fontSize: '20px' }}>Question 1</h2>
+                            {activePoll.status === 'active' && (
+                                <div style={{ color: 'var(--error)', fontWeight: 600, fontSize: '14px' }}>
+                                    ⏱️ 00:{(remainingTime ?? 0) < 10 ? `0${remainingTime ?? 0}` : remainingTime ?? 0}
+                                </div>
+                            )}
+                        </div>
                     </div>
 
-                    <div className="flex w-full gap-4">
-                        <div className="flex-1">
-                            <Card className="w-full">
+                    <div className="flex justify-center w-full">
+                        <div className="flex-1" style={{ width: '600px', maxWidth: '100%', flex: 'none' }}>
+                            <Card style={{ width: '100%' }}>
                                 <div style={{ padding: '16px', backgroundColor: 'var(--dark-gray)', color: 'var(--white)', fontWeight: 600, fontSize: '16px' }}>
                                     {activePoll.question}
                                 </div>
@@ -187,13 +189,16 @@ const StudentView: React.FC = () => {
                                                 {showResults && (
                                                     <div style={{ position: 'absolute', top: 0, left: 0, height: '100%', width: `${percentage}%`, backgroundColor: 'var(--secondary-purple)', opacity: 0.8, transition: 'width 0.3s ease' }} />
                                                 )}
-                                                <div className="flex justify-between w-full" style={{ position: 'relative', zIndex: 1, padding: '0 16px', fontWeight: 600, fontSize: '14px' }}>
-                                                    <span style={{ color: (showResults && percentage > 50) ? 'var(--white)' : 'var(--dark-gray)' }}>
-                                                        <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px', borderRadius: '50%', backgroundColor: 'var(--primary-purple)', color: 'white', marginRight: '8px', fontSize: '12px' }}>{opt.id}</span>
-                                                        {opt.text}
+                                                <div className="flex justify-between w-full items-center" style={{ position: 'relative', zIndex: 1, padding: '0 16px', fontWeight: 600, fontSize: '14px' }}>
+                                                    <span
+                                                        style={{ color: (showResults && percentage > 50) ? 'var(--white)' : 'var(--dark-gray)', display: 'flex', alignItems: 'center', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', marginRight: '16px' }}
+                                                        title={opt.text}
+                                                    >
+                                                        <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px', borderRadius: '50%', backgroundColor: 'var(--primary-purple)', color: 'white', marginRight: '8px', fontSize: '12px', flexShrink: 0 }}>{opt.id}</span>
+                                                        <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{opt.text}</span>
                                                     </span>
                                                     {showResults && (
-                                                        <span style={{ color: (percentage > 50) ? 'var(--white)' : 'var(--dark-gray)' }}>{percentage}%</span>
+                                                        <span style={{ color: (percentage > 50) ? 'var(--white)' : 'var(--dark-gray)', flexShrink: 0 }}>{percentage}%</span>
                                                     )}
                                                 </div>
                                             </div>
